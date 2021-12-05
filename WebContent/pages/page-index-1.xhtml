@@ -78,10 +78,13 @@
             <!-- search-wrap .end// -->
           </div>
           <!-- col.// -->
-          <div class="col-lg-4 col-sm-6 col-12">
-            <div class="widgets-wrap float-lg-right">
+          <h:form class="col-lg-4 col-sm-6 col-12">
+            <div class="widgets-wrap float-md-right">
               <div class="widget-header  mr-3">
-                <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a> <span class="badge badge-pill badge-danger notify">0</span>
+                <h:commandLink action="/pages/page-shopping-cart.xhtml" class="icon icon-sm rounded-circle border">
+                  <i class="fa fa-shopping-cart"></i>
+                </h:commandLink>
+                <span class="badge badge-pill badge-danger notify">#{cartMB.items.size()}</span>
               </div>
               <div class="widget-header icontext">
                 <a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
@@ -94,7 +97,7 @@
               </div>
             </div>
             <!-- widgets-wrap.// -->
-          </div>
+          </h:form>
           <!-- col.// -->
         </div>
         <!-- row.// -->
@@ -213,10 +216,14 @@
           <ui:repeat var="produto" value="#{produtoMB.produtos}">
             <div class="col-md-3">
               <div href="#" class="card card-product-grid">
-                <a href="#" class="img-wrap"> <img src="images/items/1.jpg" /></a>
+                <div href="#" class="img-wrap">
+                  <p:graphicImage value="#{produtoMB.photo}">
+                    <f:param name="id" value="#{produto.id}"></f:param>
+                  </p:graphicImage>
+                </div>
                 <figcaption class="info-wrap">
-                  <a href="#" class="title">Just another product name</a>
-  
+                  <h6>#{produto.nome} (#{produto.quantidade})</h6>
+                  <small>#{produto.descricao}</small>
                   <div class="rating-wrap">
                     <ul class="rating-stars">
                       <li style="width: 80%" class="stars-active"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
@@ -224,13 +231,13 @@
                     </ul>
                     <span class="label-rating text-muted"> 34 reviws</span>
                   </div>
-                  <div class="price mt-1">$179.00</div>
-                  <h:commandLink class="btn btn-block btn-primary mt-1" value="Add to cart"></h:commandLink>
+                  <div class="price mt-1">R$ #{produto.preco}</div>
+                  <h:commandLink class="btn btn-block btn-primary mt-1" value="Add to cart" action="#{cartMB.comprar(produto)}"></h:commandLink>
                   <!-- price-wrap.// -->
                 </figcaption>
               </div>
             </div>
-            </ui:repeat>
+          </ui:repeat>
           <!-- col.// -->
         </div>
       </h:form>

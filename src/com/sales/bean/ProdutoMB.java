@@ -115,7 +115,7 @@ public class ProdutoMB {
 
   public String index() {
     this.produtos = produtoModel.findAll();
-    return "/index?faces-redirect=true";
+    return "/pages/page-index-1.xhtml?faces-redirect=true";
   }
 
   public void saveOrUpdate() {

@@ -34,13 +34,13 @@ public class CartMB {
 			int quantidade = this.items.get(index).getQuantidade() + 1;
 			this.items.get(index).setQuantidade(quantidade);
 		}
-		return "cart?faces-redirect=true";
+		return "/pages/page-shopping-cart.xhtml?faces-redirect=true";
 	}
 
 	public String deletar(Produto produto) {
 		int index = this.temProduto(produto);
 		this.items.remove(index);
-		return "cart?faces-redirect=true";
+		return "/pages/page-shopping-cart.xhtml?faces-redirect=true";
 	}
 
 	public double total() {
