@@ -45,7 +45,7 @@ public class ProdutoMB {
     return produto;
   }
 
-  public Produto buscarProduto(Integer id) {
+  public Produto buscarProduto(int id) {
     produtoModel = new ProdutoModel();
     produto = produtoModel.find(id);
     return produto;
@@ -115,8 +115,7 @@ public class ProdutoMB {
 
   public String index() {
     this.produtos = produtoModel.findAll();
-    // return "/index?faces-redirect=true";
-    return "/paginas/lista-produtos?faces-redirect=true";
+    return "/index?faces-redirect=true";
   }
 
   public void saveOrUpdate() {
@@ -170,6 +169,7 @@ public class ProdutoMB {
    * queryObj.getSingleResult(); } return maxProdId; }
    */
   public BufferedImage exibirFoto(int id) {
+
     // byte[] foto = null;
 
     // LENDO E COPIANDO IMAGEM ##############################################
@@ -186,15 +186,36 @@ public class ProdutoMB {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
+
     return img;
   }
 
   public StreamedContent getImagem(int id) {
     System.out.println("Sistema de Imagens");
-    return (new DefaultStreamedContent(new ByteArrayInputStream(buscarProduto(id).getFoto())));
+    return new DefaultStreamedContent(new ByteArrayInputStream(buscarProduto(id).getFoto()));
+  }
+
+  public StreamedContent getPhoto() {
+
+    FacesContext context = FacesContext.getCurrentInstance();
+
+    if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+      // So, we're rendering the view. Return a stub StreamedContent so that it will
+      // generate right URL.
+      return new DefaultStreamedContent();
+    }
+    else {
+      // So, browser is requesting the image. Return a real StreamedContent with the
+      // image bytes.
+      int id = Integer.parseInt(context.getExternalContext().getRequestParameterMap().get("id"));
+//       Image image = (Image) produto.getFoto();
+      return new DefaultStreamedContent(new ByteArrayInputStream(buscarProduto(id).getFoto()));
+    } 
+
   }
 
   public StreamedContent getImage() throws IOException {
+
     FacesContext context = FacesContext.getCurrentInstance();
 
     if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {

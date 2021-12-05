@@ -43,7 +43,7 @@ public class ProdutoModel {
     try {
       session = sessionFactory.openSession();
       transaction = session.beginTransaction();
-      org.hibernate.query.Query query = session.createQuery("from produto where id = :id");
+      org.hibernate.query.Query query = session.createQuery("from Produto where id = :id");
       query.setParameter("id", id);
       produto = (Produto) query.uniqueResult();
       transaction.commit();

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
   <meta charset="utf-8" />
@@ -37,10 +37,8 @@
 
 </h:head>
 
-<body>
-
+<h:body>
   <header class="section-header">
-
     <nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
       <div class="container">
         <ul class="navbar-nav d-none d-md-flex mr-auto">
@@ -212,105 +210,27 @@
 
       <h:form id="produtos">
         <div class="row">
-          <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-              <a href="#" class="img-wrap"> <img src="images/items/1.jpg" /></a>
-              <figcaption class="info-wrap">
-                <a href="#" class="title">Just another product name</a>
-
-                <div class="rating-wrap">
-                  <ul class="rating-stars">
-                    <li style="width: 80%" class="stars-active"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                  </ul>
-                  <span class="label-rating text-muted"> 34 reviws</span>
-                </div>
-                <div class="price mt-1">$179.00</div>
-                <h:commandLink class="btn btn-block btn-primary mt-1" value="Add to cart"></h:commandLink>
-                <!-- price-wrap.// -->
-              </figcaption>
+          <ui:repeat var="produto" value="#{produtoMB.produtos}">
+            <div class="col-md-3">
+              <div href="#" class="card card-product-grid">
+                <a href="#" class="img-wrap"> <img src="images/items/1.jpg" /></a>
+                <figcaption class="info-wrap">
+                  <a href="#" class="title">Just another product name</a>
+  
+                  <div class="rating-wrap">
+                    <ul class="rating-stars">
+                      <li style="width: 80%" class="stars-active"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
+                      <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
+                    </ul>
+                    <span class="label-rating text-muted"> 34 reviws</span>
+                  </div>
+                  <div class="price mt-1">$179.00</div>
+                  <h:commandLink class="btn btn-block btn-primary mt-1" value="Add to cart"></h:commandLink>
+                  <!-- price-wrap.// -->
+                </figcaption>
+              </div>
             </div>
-          </div>
-          <!-- col.// -->
-          <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-              <a href="#" class="img-wrap"> <img src="images/items/2.jpg" /></a>
-              <figcaption class="info-wrap">
-                <a href="#" class="title">Some item name here</a>
-
-                <div class="rating-wrap">
-                  <ul class="rating-stars">
-                    <li style="width: 80%" class="stars-active"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                  </ul>
-                  <span class="label-rating text-muted"> 34 reviws</span>
-                </div>
-                <div class="price mt-1">$280.00</div>
-                <h:commandLink class="btn btn-block btn-primary mt-1" value="Add to cart"></h:commandLink>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          <!-- col.// -->
-          <div class="col-md-3">
-            <div href="#" class="card card-product-grid">
-              <a href="#" class="img-wrap"> <img src="images/items/3.jpg" /></a>
-              <figcaption class="info-wrap">
-                <a href="#" class="title">Great product name here</a>
-
-                <div class="rating-wrap">
-                  <ul class="rating-stars">
-                    <li style="width: 80%" class="stars-active"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                  </ul>
-                  <span class="label-rating text-muted"> 34 reviws</span>
-                </div>
-                <div class="price mt-1">$56.00</div>
-                <h:commandLink class="btn btn-block btn-primary mt-1" value="Add to cart"></h:commandLink>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-          <!-- col.// -->
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="#" class="img-wrap"> <img src="images/items/4.jpg" /></a>
-              <figcaption class="info-wrap">
-                <a href="#" class="title">Just another product name</a>
-
-                <div class="rating-wrap">
-                  <ul class="rating-stars">
-                    <li style="width: 80%" class="stars-active"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                  </ul>
-                  <span class="label-rating text-muted"> 34 reviws</span>
-                </div>
-                <div class="price mt-1">$179.00</div>
-                <h:commandLink class="btn btn-block btn-primary mt-1" value="Add to cart"></h:commandLink>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
-
-          <div class="col-md-3">
-            <div class="card card-product-grid">
-              <a href="#" class="img-wrap"> <img src="images/items/4.jpg" /></a>
-              <figcaption class="info-wrap">
-                <a href="#" class="title">Just another product name</a>
-
-                <div class="rating-wrap">
-                  <ul class="rating-stars">
-                    <li style="width: 80%" class="stars-active"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></li>
-                  </ul>
-                  <span class="label-rating text-muted"> 34 reviws</span>
-                </div>
-                <div class="price mt-1">$179.00</div>
-                <h:commandLink class="btn btn-block btn-primary mt-1" value="Add to cart"></h:commandLink>
-                <!-- price-wrap.// -->
-              </figcaption>
-            </div>
-          </div>
+            </ui:repeat>
           <!-- col.// -->
         </div>
       </h:form>
@@ -480,6 +400,6 @@
   </footer>
   <!-- ========================= FOOTER END // ========================= -->
 
-</body>
+</h:body>
 
 </html>
