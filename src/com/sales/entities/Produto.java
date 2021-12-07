@@ -33,7 +33,7 @@ public class Produto {
   private boolean status;
 
   @Lob
-  @Column(columnDefinition = "mediumblob")
+  @Column
   private byte[] foto;
 
   public int getId() {
